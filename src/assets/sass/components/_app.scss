@@ -44,3 +44,9 @@ body {
 
 	.btn-select-quiz { display: flex; width: 100%; }
 }
+
+.score-wrapper {
+	.table {
+		color: $app-color;
+	}
+}

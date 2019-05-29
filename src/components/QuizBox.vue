@@ -27,6 +27,8 @@ export default {
 		questions: Array,
 		setQuizIndex: Function,
 		activeIndex: Number,
+		getLastId: Number,
+		lsUpdateQuiz: Function,
 	},
 	data() {
 		return {
@@ -35,14 +37,42 @@ export default {
 			// questions: [], // question table
 			numTotal: 0, // number of answered questions
 			numCorrect: 0, // number of correct answares
+			qId: null,
+			qCategory: null,
+			qDifficulty: null,
+			qPoints: 0,
 		};
 	},
 	methods: {
 		increment(isCorrect) {
 			if (isCorrect) {
 				this.numCorrect += 1;
+
+				let multiplier = 0;
+				switch (this.qDifficulty) {
+				case 'easy': multiplier = 1;
+					break;
+				case 'normal': multiplier = 3;
+					break;
+				case 'hard': multiplier = 5;
+					break;
+				default: multiplier = 0;
+				}
+
+				this.qPoints += 17 * multiplier;
 			}
+
 			this.numTotal += 1;
+
+			const prop = { result: this.numCorrect, points: this.qPoints };
+			if (this.total === this.numTotal) {
+				prop.finished = true;
+			}
+
+			this.lsUpdateQuiz({
+				id: this.qId,
+				prop,
+			});
 		},
 		next() {
 			if (this.index < this.total) {
@@ -64,15 +94,42 @@ export default {
 		},
 	},
 	created() {
+		this.qId = this.getLastId;
 		this.total = this.questions.length;
 		this.index = this.activeIndex;
 	},
 	watch: {
+		getLastId: {
+			immediate: true,
+			handler() {
+				if (this.qId === null) {
+					this.qId = this.getLastId;
+					console.log(this.qId);
+				}
+			},
+		},
 		questions: {
 			immediate: true,
 			handler() {
+				if (this.qCategory === null && this.qId !== null) {
+					this.qCategory = this.questions[0].category;
+
+					this.lsUpdateQuiz({
+						id: this.qId,
+						prop: { category: this.qCategory },
+					});
+				}
+
+				if (this.qDifficulty === null && this.qId !== null) {
+					this.qDifficulty = this.questions[0].difficulty;
+
+					this.lsUpdateQuiz({
+						id: this.qId,
+						prop: { difficulty: this.qDifficulty },
+					});
+				}
+
 				this.total = this.questions.length;
-				console.log(this.questions);
 			},
 		},
 	},

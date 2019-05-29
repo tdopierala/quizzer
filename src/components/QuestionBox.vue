@@ -90,9 +90,10 @@ export default {
 	},
 	computed: {
 		answers() {
-			let answers = [...this.currentQuestion.incorrect_answers];
+			const answers = [...this.currentQuestion.incorrect_answers];
 			answers.push(this.currentQuestion.correct_answer);
-			answers = Lodash.shuffle(answers);
+			// answers = Lodash.shuffle(answers);
+			Lodash.shuffle(answers);
 			return answers;
 		},
 		correctAnswer() {
@@ -103,6 +104,7 @@ export default {
 		currentQuestion: {
 			immediate: true,
 			handler() {
+				console.log(this.answers);
 				if (this.currentQuestion.selected_answer !== null) {
 					this.selectedIndex = this.currentQuestion.selected_answer;
 					this.answered = true;

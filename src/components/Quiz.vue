@@ -10,6 +10,8 @@
 			v-bind:questions="allQuestions"
 			v-bind:setQuizIndex="setQuizIndex"
 			v-bind:activeIndex="activeIndex"
+			v-bind:getLastId="getLastId"
+			v-bind:lsUpdateQuiz="lsUpdateQuiz"
 			v-if="quizBoxAvtive"
 		/>
 	</b-container>
@@ -37,23 +39,32 @@ export default {
 			quizSelectorAvtive: true,
 		};
 	},
+	computed: {
+		...mapGetters(['allCategories', 'allQuestions', 'isActive', 'activeIndex', 'getLastId']),
+	},
 	methods: {
-		...mapActions(['getCategories', 'getQuestions', 'setQuizActive', 'setQuizInactive', 'setQuizIndex']),
+		...mapActions(['getCategories', 'getQuestions', 'setQuizActive', 'setQuizInactive', 'setQuizIndex', 'lsInsertQuiz', 'lsUpdateQuiz']),
 		show({ category, amount }) {
 			this.qconfig.amount = amount;
 			this.qconfig.category = category;
 
 			if (!this.isActive) {
 				this.getQuestions(this.qconfig);
+
+				this.lsInsertQuiz({
+					category: null,
+					difficulty: null,
+					questions: this.qconfig.amount,
+					result: 0,
+					finished: false,
+					points: 0,
+				});
 				this.setQuizActive();
 			}
 
 			this.quizBoxAvtive = true;
 			this.quizSelectorAvtive = false;
 		},
-	},
-	computed: {
-		...mapGetters(['allCategories', 'allQuestions', 'isActive', 'activeIndex']),
 	},
 	beforeCreate() {
 		// console.log('%c beforeCreate', 'color:red');
