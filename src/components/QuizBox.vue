@@ -29,6 +29,7 @@ export default {
 		activeIndex: Number,
 		getLastId: Number,
 		lsUpdateQuiz: Function,
+		setQuizInactive: Function,
 	},
 	data() {
 		return {
@@ -52,7 +53,7 @@ export default {
 				switch (this.qDifficulty) {
 				case 'easy': multiplier = 1;
 					break;
-				case 'normal': multiplier = 3;
+				case 'medium': multiplier = 3;
 					break;
 				case 'hard': multiplier = 5;
 					break;
@@ -67,6 +68,7 @@ export default {
 			const prop = { result: this.numCorrect, points: this.qPoints };
 			if (this.total === this.numTotal) {
 				prop.finished = true;
+				this.setQuizInactive();
 			}
 
 			this.lsUpdateQuiz({

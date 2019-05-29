@@ -83,7 +83,7 @@ export default {
 				this.quizzes = this.allQuizzes;
 
 				for (let i = 0; i < this.quizzes.length; i += 1) {
-					this.quizzes[i].date = moment(this.quizzes[i].date).format('DD-MM-YYYY');
+					this.quizzes[i].date = moment(this.quizzes[i].date).format('DD-MM-YYYY HH:mm:ss');
 					this.totalPoints += this.quizzes[i].points;
 				}
 

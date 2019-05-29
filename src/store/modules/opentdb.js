@@ -21,8 +21,8 @@ const actions = {
 				// commit('setQuestions', Lodash.shuffle(Questions.results));
 			});
 	},
-	async getQuestions({ commit }, { amount, category }) {
-		await Axios.get(`https://opentdb.com/api.php?type=multiple&amount=${amount}&category=${category}`)
+	async getQuestions({ commit }, { amount, category, difficulty }) {
+		await Axios.get(`https://opentdb.com/api.php?type=multiple&amount=${amount}&category=${category}&difficulty=${difficulty}`)
 			.then((response) => {
 				commit('initQuestions', Lodash.shuffle(response.data.results));
 			})

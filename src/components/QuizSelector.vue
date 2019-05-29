@@ -3,7 +3,14 @@
 		<b-form-group>
 			<b-form-select
 				v-model="category"
-				v-bind:options="options"
+				v-bind:options="categoryOptions"
+			></b-form-select>
+		</b-form-group>
+
+		<b-form-group>
+			<b-form-select
+				v-model="difficulty"
+				v-bind:options="difficultyOptions"
 			></b-form-select>
 		</b-form-group>
 
@@ -30,9 +37,11 @@ export default {
 	},
 	data() {
 		return {
-			category: null,
 			amount: 10,
-			options: [],
+			category: null,
+			categoryOptions: [],
+			difficulty: null,
+			difficultyOptions: [],
 		};
 	},
 	methods: {
@@ -47,8 +56,18 @@ export default {
 					text: this.categories[i].name,
 				});
 			}
-			this.options = options;
+			this.categoryOptions = options;
 		},
+		fillDifficulty() {
+			this.difficultyOptions = [
+				{ value: 'easy', text: 'easy' },
+				{ value: 'medium', text: 'medium' },
+				{ value: 'hard', text: 'hard' },
+			];
+		},
+	},
+	created() {
+		this.fillDifficulty();
 	},
 	watch: {
 		categories: {
