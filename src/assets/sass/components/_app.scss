@@ -1,9 +1,17 @@
+body {
+	background-color: $app-bkg-color;
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+}
+
 #app {
 	font-family: $app-font;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: $app-color;
+	margin: 0 auto;
 }
 
 #nav {
