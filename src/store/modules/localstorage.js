@@ -12,8 +12,10 @@ const getters = {
 
 const actions = {
 	async lsSelectQuizzes({ commit }) {
-		const result = await db.quizzes.limit(10).toArray();
-		// console.log(result);
+		const result = await db.quizzes.limit(10).toArray()
+			.then(res => res)
+			.catch(e => console.log(e));
+
 		commit('initSelect', result);
 	},
 	async lsInsertQuiz({ commit }, quiz) {
@@ -39,20 +41,6 @@ const actions = {
 		await db.quizzes.where('id').equals(quiz.id).delete();
 
 		commit('initDelete');
-	},
-	async lsInsertDefault({ commit }) {
-		await db.quizzes.bulkPut([
-			{
-				date: Date.now(), category: 'Test Dexie', questions: 10, result: 4, points: 12,
-			},
-			{
-				date: Date.now(), category: 'Test Dexie 2', questions: 15, result: 5, points: 15,
-			},
-			{
-				date: Date.now(), category: 'Test Dexie 2', questions: 11, result: 1, points: 3,
-			},
-		]);
-		commit('initInsert');
 	},
 };
 
