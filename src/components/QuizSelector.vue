@@ -3,15 +3,17 @@
 		<b-form-group>
 			<b-form-select
 				v-model="category"
-				v-bind:options="categoryOptions"
-			></b-form-select>
+				v-bind:options="categoryOptions">
+
+			</b-form-select>
 		</b-form-group>
 
 		<b-form-group>
 			<b-form-select
 				v-model="difficulty"
-				v-bind:options="difficultyOptions"
-			></b-form-select>
+				v-bind:options="difficultyOptions">
+
+			</b-form-select>
 		</b-form-group>
 
 		<b-form-group>
@@ -39,9 +41,17 @@ export default {
 		return {
 			amount: 10,
 			category: null,
-			categoryOptions: [],
+			categoryOptions: [{
+				value: null,
+				text: '-- Select category --',
+				disabled: true,
+			}],
 			difficulty: null,
-			difficultyOptions: [],
+			difficultyOptions: [{
+				value: null,
+				text: '-- Select difficulty --',
+				disabled: true,
+			}],
 		};
 	},
 	methods: {
@@ -49,21 +59,20 @@ export default {
 			this.show(this);
 		},
 		fillCategoies() {
-			const options = [];
 			for (let i = 0; i < this.categories.length; i += 1) {
-				options.push({
+				this.categoryOptions.push({
 					value: this.categories[i].id,
 					text: this.categories[i].name,
+					disabled: false,
 				});
 			}
-			this.categoryOptions = options;
 		},
 		fillDifficulty() {
-			this.difficultyOptions = [
-				{ value: 'easy', text: 'easy' },
-				{ value: 'medium', text: 'medium' },
-				{ value: 'hard', text: 'hard' },
-			];
+			this.difficultyOptions = this.difficultyOptions.concat([
+				{ value: 'easy', text: 'easy', disabled: false },
+				{ value: 'medium', text: 'medium', disabled: false },
+				{ value: 'hard', text: 'hard', disabled: false },
+			]);
 		},
 	},
 	created() {

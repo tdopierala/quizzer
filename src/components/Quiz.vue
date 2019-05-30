@@ -1,6 +1,6 @@
 <template>
 	<b-container class="quiz-wrapper">
-		<h1>Quiz wrapper</h1>
+		<h1>Quizzer</h1>
 		<QuizSelector
 			v-bind:categories="allCategories"
 			v-bind:show="show"
