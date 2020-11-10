@@ -78,11 +78,6 @@ h1 {
 	}
 }
 
-.content-wrapper {
-	margin: 0 auto;
-	/* width: 50vw; */
-}
-
 .quiz-wrapper {
 	width: 600px;
 }
@@ -108,6 +103,8 @@ h1 {
 }
 
 .score-wrapper {
+	margin: 0 auto;
+	width: 90vw;
 	.table {
 		color: $app-color;
 	}
