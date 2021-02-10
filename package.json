@@ -1,6 +1,7 @@
 {
-  "name": "quizzer2",
-  "version": "0.1.0",
+  "name": "quizzer",
+  "version": "0.1.0-dev",
+  "license" : "GPL-3.0-only",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
