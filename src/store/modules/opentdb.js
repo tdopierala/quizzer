@@ -4,10 +4,10 @@ import Lodash from 'lodash';
 import Questions from '@/store/data/questions';
 
 const getters = {
-	allQuestions: state => state.questions,
-	allCategories: state => state.categories,
-	isActive: state => state.quiz.active,
-	activeIndex: state => state.quiz.index,
+	allQuestions: (state) => state.questions,
+	allCategories: (state) => state.categories,
+	isActive: (state) => state.quiz.active,
+	activeIndex: (state) => state.quiz.index,
 };
 
 const actions = {

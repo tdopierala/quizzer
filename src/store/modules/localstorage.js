@@ -6,15 +6,15 @@ db.version(1).stores({
 });
 
 const getters = {
-	allQuizzes: state => state.quizzes,
-	getLastId: state => state.lastId,
+	allQuizzes: (state) => state.quizzes,
+	getLastId: (state) => state.lastId,
 };
 
 const actions = {
 	async lsSelectQuizzes({ commit }) {
 		const result = await db.quizzes.limit(10).toArray()
-			.then(res => res)
-			.catch(e => console.log(e));
+			.then((res) => res)
+			.catch((e) => console.log(e));
 
 		commit('initSelect', result);
 	},
