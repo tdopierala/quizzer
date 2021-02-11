@@ -1,3 +1,3 @@
 module.exports = {
-    //publicPath: './quizzer/'
+    publicPath: '/quizzer/'
 };
