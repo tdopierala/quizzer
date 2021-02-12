@@ -1,6 +1,11 @@
 # Quizzer
 
-Quizzer is application for solving random quizzes from Open Trivia DB Api based on Vue.js 
+Quizzer is application for solving random quizzes from Open Trivia DB Api based on Vue.js
+
+[quizzer-demo.netlify.app](https://quizzer-demo.netlify.app/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/add7b6cf-82f5-491d-b8f4-f973e693c481/deploy-status)](https://app.netlify.com/sites/quizzer-demo/deploys)
+
 
 ## Table of contents
 * [Quick start](#quick-start)
@@ -34,6 +39,8 @@ Latest: 0.1.0-dev
 
 ## Status
 `in development`
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/add7b6cf-82f5-491d-b8f4-f973e693c481/deploy-status)](https://app.netlify.com/sites/quizzer-demo/deploys)
 
 ## TODO
 * describe the project on the start page
