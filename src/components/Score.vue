@@ -87,7 +87,7 @@ export default {
 					this.totalPoints += this.quizzes[i].points;
 				}
 
-				//console.log(this.quizzes);
+				// console.log(this.quizzes);
 			},
 		},
 	},
