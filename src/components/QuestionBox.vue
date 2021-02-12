@@ -56,7 +56,7 @@ export default {
 		selectAnswer(index) {
 			if (!this.answered) {
 				this.selectedIndex = index;
-				console.log(index === this.correctAnswer);
+				//console.log(index === this.correctAnswer);
 
 				this.submitAnswer();
 				// this.next();
@@ -104,7 +104,7 @@ export default {
 		currentQuestion: {
 			immediate: true,
 			handler() {
-				console.log(this.answers);
+				//console.log(this.answers);
 				if (this.currentQuestion.selected_answer !== null) {
 					this.selectedIndex = this.currentQuestion.selected_answer;
 					this.answered = true;
