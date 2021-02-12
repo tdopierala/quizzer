@@ -14,7 +14,7 @@ const actions = {
 	async lsSelectQuizzes({ commit }) {
 		const result = await db.quizzes.limit(10).toArray()
 			.then((res) => res)
-			.catch((e) => console.log(e));
+			.catch(() => {});
 
 		commit('initSelect', result);
 	},

@@ -16,18 +16,14 @@ const actions = {
 			.then((response) => {
 				commit('initCategories', response.data.trivia_categories);
 			})
-			.catch((error) => {
-				console.log(error);
-				// commit('setQuestions', Lodash.shuffle(Questions.results));
-			});
+			.catch(() => {});
 	},
 	async getQuestions({ commit }, { amount, category, difficulty }) {
 		await Axios.get(`https://opentdb.com/api.php?type=multiple&amount=${amount}&category=${category}&difficulty=${difficulty}`)
 			.then((response) => {
 				commit('initQuestions', Lodash.shuffle(response.data.results));
 			})
-			.catch((error) => {
-				console.log(error);
+			.catch(() => {
 				commit('initQuestions', Lodash.shuffle(Questions.results));
 			});
 	},
