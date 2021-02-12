@@ -37,7 +37,7 @@ Latest: 0.1.0-dev
 
 ## TODO
 * describe the project on the start page
-* fixed the error with unsorted answers
+* ~~fixed the error with unsorted answers~~ (fixed)
 * filling the about me page
 
 ## Copyright and license
