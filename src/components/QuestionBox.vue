@@ -90,9 +90,9 @@ export default {
 	},
 	computed: {
 		answers() {
-			const answers = [...this.currentQuestion.incorrect_answers];
+			let answers = [...this.currentQuestion.incorrect_answers];
 			answers.push(this.currentQuestion.correct_answer);
-			// answers = Lodash.shuffle(answers);
+			answers = Lodash.shuffle(answers);
 			Lodash.shuffle(answers);
 			return answers;
 		},
